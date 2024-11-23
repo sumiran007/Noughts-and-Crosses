@@ -57,9 +57,10 @@ def handle_mouse_click(grid, mouse_x, mouse_y, current_player):
         return True
     return False
 
-def print_grid(grid):
-    for row in grid:
-        print(row)
+# def print_grid(grid):
+#     for row in grid:
+#         print(row)
+#used to chec that the grid is changing correctly
 
 def ai_move(grid):
     available_moves = [(i, j) for i in range(3) for j in range(3) if grid[i][j] == 0]
@@ -75,9 +76,10 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
-            print(mouse_x, mouse_y)
+            #print(mouse_x, mouse_y)
+            #used to check that the correct squares are being printed into using the coordinates
             if handle_mouse_click(grid, mouse_x, mouse_y, current_player):
-                print_grid(grid)
+                # print_grid(grid)
                 if is_grid_full(grid):
                     print("The grid is full!")
                     running = False
@@ -93,7 +95,7 @@ while running:
 
     if mode == '2' and current_player == 2 and running:
         if ai_move(grid):
-            print_grid(grid)
+            #print_grid(grid)
             if is_grid_full(grid):
                 print("The grid is full!")
                 running = False
