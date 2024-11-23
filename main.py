@@ -5,11 +5,12 @@ width, height = 900, 900
 grid = [[0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]]
+#This sets up the 3 by 3 grid and can be changed
 pygame.init()
 screen = pygame.display.set_mode((width, height))
 running = True
 current_player = 1
-
+#This alternated to help it be player 1 then player 2
 # Ask the user whether they want to play against an AI or another player
 mode = input("Enter '1' to play against another player or '2' to play against AI: ")
 
@@ -22,7 +23,7 @@ def is_grid_full(grid):
         if 0 in row:
             return False
     return True
-
+#checks if the grid is full and stops game below if it is True
 def check_winner(grid):
     # Check rows and columns
     for i in range(3):
@@ -36,7 +37,7 @@ def check_winner(grid):
     if grid[0][2] == grid[1][1] == grid[2][0] != 0:
         return grid[0][2]
     return None
-
+#checks to see if someone has won
 def draw_grid(screen):
     screen.fill((255, 255, 255))
     for i in range(1, 3):
@@ -49,14 +50,14 @@ def draw_grid(screen):
             elif grid[row][col] == 2:
                 screen.blit(o_img, (col * 300, row * 300))
     pygame.display.flip()
-
+#prints in the x or o respectively
 def handle_mouse_click(grid, mouse_x, mouse_y, current_player):
     row, col = mouse_x // 300, mouse_y // 300
     if grid[col][row] == 0:
         grid[col][row] = current_player
         return True
     return False
-
+#goes to the correct row ro column
 def print_grid(grid):
     for row in grid:
         print(row)
@@ -90,7 +91,7 @@ while running:
                         current_player = 2 if current_player == 1 else 1
                     elif mode == '2':
                         current_player = 2
-
+#checks winner and if there is no winner then it switches the layer
     if mode == '2' and current_player == 2 and running:
         if ai_move(grid):
             print_grid(grid)
@@ -103,5 +104,5 @@ while running:
                 running = False
             else:
                 current_player = 1
-
+#final check for winner vs full grid which is a draw
     draw_grid(screen)
