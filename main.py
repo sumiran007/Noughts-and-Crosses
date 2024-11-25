@@ -48,6 +48,7 @@ def draw_grid(screen):
                 screen.blit(x_img, (col * 300 + 40, row * 300 + 40))
             elif grid[row][col] == 2:
                 screen.blit(o_img, (col * 300 + 70, row * 300))
+                #calibration of the o and x images to put them in the correct squares
     pygame.display.flip()
 
 def handle_mouse_click(grid, mouse_x, mouse_y, current_player):
