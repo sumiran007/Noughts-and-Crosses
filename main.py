@@ -38,10 +38,10 @@ def check_winner(grid):
     return None
 
 def draw_grid(screen):
-    screen.fill((255, 255, 255))
+    screen.fill((186,225,255))
     for i in range(1, 3):
-        pygame.draw.line(screen, (0, 0, 0), (i * 300, 0), (i * 300, 900), 10)
-        pygame.draw.line(screen, (0, 0, 0), (0, i * 300), (900, i * 300), 10)
+        pygame.draw.line(screen, (47, 79, 79), (i * 300, 0), (i * 300, 900), 10, )
+        pygame.draw.line(screen, (47, 79, 79), (0, i * 300), (900, i * 300), 10, )
     for row in range(3):
         for col in range(3):
             if grid[row][col] == 1:
