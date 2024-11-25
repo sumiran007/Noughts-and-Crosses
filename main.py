@@ -45,9 +45,9 @@ def draw_grid(screen):
     for row in range(3):
         for col in range(3):
             if grid[row][col] == 1:
-                screen.blit(x_img, (col * 300, row * 300))
+                screen.blit(x_img, (col * 300 + 40, row * 300 + 40))
             elif grid[row][col] == 2:
-                screen.blit(o_img, (col * 300, row * 300))
+                screen.blit(o_img, (col * 300 + 70, row * 300))
     pygame.display.flip()
 
 def handle_mouse_click(grid, mouse_x, mouse_y, current_player):
@@ -63,7 +63,10 @@ def handle_mouse_click(grid, mouse_x, mouse_y, current_player):
 #used to chec that the grid is changing correctly
 
 def ai_move(grid):
-    available_moves = [(i, j) for i in range(3) for j in range(3) if grid[i][j] == 0]
+    available_moves = [(i, j)
+    for i in range(3)
+    for j in range(3)
+    if grid[i][j] == 0]
     if available_moves:
         move = random.choice(available_moves)
         grid[move[0]][move[1]] = 2
@@ -76,7 +79,7 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
-            #print(mouse_x, mouse_y)
+            #print(x coordinate and y coordinate)
             #used to check that the correct squares are being printed into using the coordinates
             if handle_mouse_click(grid, mouse_x, mouse_y, current_player):
                 # print_grid(grid)
