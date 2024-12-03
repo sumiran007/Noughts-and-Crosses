@@ -24,13 +24,14 @@ def is_grid_full(grid):
     return True
 
 def check_winner(grid):
-    # Check rows and columns
+    # check rows and columns to see if all of them are ewqual to each other
     for i in range(3):
         if grid[i][0] == grid[i][1] == grid[i][2] != 0:
             return grid[i][0]
         if grid[0][i] == grid[1][i] == grid[2][i] != 0:
             return grid[0][i]
-    # Check diagonals
+    # check diagonals by iterating through the cornerws because the x and y og the diagonals are teh same
+    
     if grid[0][0] == grid[1][1] == grid[2][2] != 0:
         return grid[0][0]
     if grid[0][2] == grid[1][1] == grid[2][0] != 0:
